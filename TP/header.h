@@ -18,6 +18,7 @@ typedef struct Data data;
 typedef struct Guitarra guitarra;
 typedef struct Aluguer aluguer;
 typedef struct Cliente cliente;
+typedef struct Node node;
 
     
     

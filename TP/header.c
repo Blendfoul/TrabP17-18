@@ -21,13 +21,19 @@ typedef struct Aluguer {
     int estado; //0-a decorrer/1-entregue/2-entregue com danos//
     data inicio;
     data entrega;
-    
+    struct Aluguer * prox;
 } aluguer;
 
 typedef struct Cliente {
     int NIF;
-    int Nalugueres;
+    int NAlugueres;
     char nome[TAM];
     aluguer al; //mem dinamica
 
 } cliente;
+
+
+typedef struct Node {
+    struct Cliente atual;
+    struct node * prox;     //no=no->prox;
+} node;
