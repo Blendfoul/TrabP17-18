@@ -34,7 +34,7 @@ typedef struct Aluguer {
     int estado; //0-a decorrer/1-entregue/2-entregue com danos//
     data inicio;
     data entrega;
-    
+    struct Aluguer * prox;
 } aluguer;
 
 typedef struct Cliente {
@@ -44,6 +44,13 @@ typedef struct Cliente {
     aluguer al; //mem dinamica
 
 } cliente;
+
+
+typedef struct node {
+    struct Cliente atual;
+    struct node * prox;     //no=no->prox;
+} no;
+
 
 
 int main(int argc, char** argv) {
