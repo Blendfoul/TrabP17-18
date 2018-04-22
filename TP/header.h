@@ -1,10 +1,6 @@
 #ifndef HEADER_H
 #define HEADER_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #include <stdio.h>
 #include <stdlib.h>
 //#include <ctype.h>
@@ -18,36 +14,15 @@ extern "C" {
 #define pathGuitarras "ficheiros/guitarras.txt"
     
 
-struct Guitarra;
-struct Aluguer;
-struct Cliente;
-struct Data;
+typedef struct Data data;
+typedef struct Guitarra guitarra;
+typedef struct Aluguer aluguer;
+typedef struct Cliente cliente;
 
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-#ifdef __cplusplus
-}
-#endif
+
 
 #endif /* HEADER_H */
 

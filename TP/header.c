@@ -1,5 +1,12 @@
 #include "header.h"
 
+typedef struct Data {
+    int dd;
+    int mm;
+    int aaaa;
+    
+} data;
+
 typedef struct Guitarra {
     int id;
     char nome[TAM];
@@ -24,12 +31,3 @@ typedef struct Cliente {
     aluguer al; //mem dinamica
 
 } cliente;
-
-typedef struct Data {
-    int dd;
-    int mm;
-    int aaaa;
-    
-} data;
-
-
