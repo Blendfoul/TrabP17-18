@@ -3,9 +3,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h> //para o boolean
 //#include <ctype.h>
 //#include <math.h>
-//#include <string.h>
+#include <string.h>
 //#include <time.h>
     
 
@@ -21,6 +22,15 @@ typedef struct Cliente cliente;
 typedef struct Node node;
 
     
+
+void case1();
+void case2();
+void case3();
+bool imprimeMenu();
+
+guitarra* criaVetor(int *tam);
+
+
     
     
 
