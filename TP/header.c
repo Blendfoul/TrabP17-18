@@ -1,40 +1,62 @@
 #include "header.h"
 
-typedef struct Data {
-    int dd;
-    int mm;
-    int aaaa;
+
+guitarra* criaVetor(int *tam){
+    guitarra* g;
+    char a[5];
+    int i=0;
+    FILE *f;
+        
+    f = fopen(pathGuitarras, "r");
+        if(f==NULL){
+            printf("Erro no acesso ao ficheiro \n");
+        }
     
-} data;
-typedef struct Guitarra {
-    int id;
-    char nome[TAM];
-    int precoDia;
-    int valor;
-    int estado; //0-disponivel/1-alugada/2-danificada//
+    
+    while(fgets(a, 5, f) != NULL){
+        i++;
+        
+        g = realloc(g, i * sizeof(guitarra));
+            if(g==NULL){
+                printf("Erro na alocacao de memoria\n");
+            }
+        
+        fscanf(f, "%d", g->id);
+        fscanf(f, "%d", g->precoDia);
+        fscanf(f, "%d", g->valor);
+        fscanf(f, "%d", g->estado);
+        fgets(g->nome, 20, f);
+    }
+    
+*tam=i;    
+fclose(f);
+return g;
+}
+void listaTodas(guitarra g[], int tam){
+    int i;
+    for(i = 0; i < tam; i++) {
+        printf("/// Nome: %s //", g[i].nome);
+        switch(g[i].estado){
+                case 0:
+                    printf(" Estado: Disponivel");
+                    break;
+                case 1:
+                    printf(" Estado: Alugada");
+                    break;
+                case 2:
+                    printf(" Estado: Danificada");
+                    break;
+        }
+        printf(" // ID: %d // Preco/Dia: %d // Valor: %d ///", 
+                g[i].id , g[i].precoDia, g[i].valor);
+    }
 
-} guitarra;
-typedef struct Aluguer {
-    int id; //da guitarra
-    int estado; //0-a decorrer/1-entregue/2-entregue com danos//
-    data inicio;
-    data entrega;
-    struct Aluguer * prox;
-} aluguer;
-typedef struct Cliente {
-    int NIF;
-    int NAlugueres;
-    char nome[TAM];
-    aluguer al; //mem dinamica
 
-} cliente;
-typedef struct Node {
-    struct Cliente atual;
-    struct node * prox;     //no=no->prox;
-} node;
+}
 
 
-void case1(){
+
+void case1(guitarra *g, int tamGuit){
  int x;
     do{
     
@@ -61,6 +83,7 @@ void case1(){
                 break;
             case 3:
                 printf("--------1-3-----------\n");
+                listaTodas(g, tamGuit);
                 //listaTodas();
                 break;
             case 4:
@@ -77,7 +100,7 @@ void case1(){
     
     }while(x != 9);
 }
-void case2(){
+void case2(guitarra *g, int tamGuit){
  int x;
     do{
     
@@ -125,7 +148,7 @@ void case2(){
     
     }while(x != 9);
 }
-void case3(){
+void case3(guitarra *g, int tamGuit){
  int x;
     do{
     
@@ -164,7 +187,7 @@ void case3(){
     }while(x != 9);
 }
 
-bool imprimeMenu(){
+bool imprimeMenu(guitarra *g, int tamGuit){
     int x;
     do{
     
@@ -182,15 +205,15 @@ bool imprimeMenu(){
     switch (x){
             case 1:
                 printf("----------1-----------\n");
-                case1();
+                case1(g, tamGuit);
                 break;
             case 2:
                 printf("----------2-----------\n");
-                case2();
+                case2(g, tamGuit);
                 break;
             case 3:
                 printf("----------3-----------\n");
-                case3();
+                case3(g, tamGuit);
                 break;                
             case 9:
                 return false;
@@ -204,11 +227,6 @@ bool imprimeMenu(){
     }while(x != 9);
 }
 
-
-
-guitarra* criaVetor(int *tam){
-
-}
 
 
 
