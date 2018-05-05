@@ -16,7 +16,7 @@ guitarra* criaVetor(int *tam){
     while(fgets(a, 5, f) != NULL){
         i++;
         
-        g = (*guitarra) realloc(g, i * sizeof(guitarra));
+        g = (guitarra) realloc(g, i * sizeof(guitarra));
             if(g==NULL){
                 printf("Erro na alocacao de memoria\n");
             }
