@@ -1,10 +1,10 @@
 #include "header.h"
 
 
-guitarra* criaVetor(int *tam){
-    guitarra* g = 0;
+guitarra * criaVetor(int * tam){
+    guitarra * g = 0;
     char a[5];
-    int i=0;
+    int i = 0;
     FILE *f;
         
     f = fopen(pathGuitarras, "r");
@@ -13,7 +13,8 @@ guitarra* criaVetor(int *tam){
         }
     
     
-    while(fgets(a, 5, f) != NULL){
+    //while(fgets(a, 5, f) != NULL)
+    while(fscanf(f, "%d", g->id) == 1){
         i++;
         
         g = (guitarra) realloc(g, i * sizeof(guitarra));
@@ -28,7 +29,7 @@ guitarra* criaVetor(int *tam){
         fgets(g->nome, 20, f);
     }
     
-*tam=i;    
+*tam = i;    
 fclose(f);
 return g;
 }
